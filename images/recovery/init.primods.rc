@@ -1,0 +1,9 @@
+#
+#  Create a remote storage service in recovery mode if eMMC booting
+#
+service rmt_storage /sbin/rmt_storage /dev/block/mmcblk0p13 /dev/block/mmcblk0p14
+    user root
+    disabled
+
+on property:ro.emmc=1
+    start rmt_storage
